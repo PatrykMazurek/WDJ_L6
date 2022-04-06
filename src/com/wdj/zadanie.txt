@@ -1,0 +1,15 @@
+5.	Utwórz klasę Drzewo z polami boolean wiecznieZielone, int wysokosc oraz String nazwaDrzewa, następnie zaimplementuj konstruktory inicjujące pola i metodę String toString() wypisującą na konsoli informacje o drzewie. Następnie stwórz klasy które będą dziedziczyć po klasie Drzewo:
+- klasa DrzewoIglaste, definiując pola int iloscIgiel i double dlugscSzyszki.
+- klasa DrzewoLisciaste, definiując pole string ksztaltLiscia oraz
+klasę DrzewoOwocowe dziedziczącą po klasie DrzewoLisciaste, definiująca pole String nazwaOwoca.
+Dla każdej z klasy przygotuj konstruktory inicjujące wszystkie pola oraz metodę String toString() wypisującą na konsoli informacje o drzewie wraz z wartościami pól opisujących drzewa. Stwórz program, który wypełni tablicę Drzewo[] las drzewami takimi
+jak: sosny, modrzewie, dęby, osiki, morelowce czy śliwy. Wykorzystując mechanizm
+polimorfizmu wyświetl wszystkie informacje o wszystkich drzewach.
+
+6.	Rozszerz program z zadania poprzedniego o następujące właściwości:
+    a.	Klasa DrzewoOwocowe ma być ostatnią klasa po której nie można dziedziczyć.
+    b.	W Klasie DrzewoOwocowe stwórz metodę finalną ZbierajOwoce.
+    c.	Klasę Drzewo stwórz abstrakcyjną
+    d.	Stwórz rozwiązanie, w którym przy tworzeniu nowego drzewa będzie nadawany numer drzewa automatycznie przy każdym uruchomieniu programu.
+    e.	W klasie Drzewo zadeklaruj metodę String: stanDrzewa, metoda ma być abstrakcyjna. Każda klasa powinna zwracać własne informacje o stanie drzewa.
+    f.	Zaimplementuj w klasie metodę która będzie konwertować obiekty dziedziczące po klasie Drzewo na obiekty danej klasy np. DrzewoLisciaste -> DzewoIglaste. W przypadku innych obiektów poinformuj o braku możliwości konwersji.
