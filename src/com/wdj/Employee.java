@@ -2,11 +2,18 @@ package com.wdj;
 
 public class Employee extends Person{
 
-    private int salary;
+    private double salary;
 
-    public Employee(int s){
+    public Employee(double s){
         salary = s;
-//        super.id = 0;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public void toShow(String s, String... zadnia ){
@@ -15,7 +22,28 @@ public class Employee extends Person{
             System.out.println(temp);
         }
     }
-    
+
+    // rozszerzenie metody zadeklarowanej w klasie Person
+    @Override
+    public void toShow() {
+        System.out.println("Pracownik z wynagrodzeniem " + salary);
+    }
+
+    // rozszerzenie metody zadeklarowanej w klasie Person
+    @Override
+    public Employee convert(Object obj) {
+        if(obj instanceof Employee){
+            return (Employee) obj;
+        }else if (obj instanceof Student){
+            Employee e = new Employee( 0);
+            e.setName( ( (Student) obj).getName());
+            e.setLastName( ( (Student) obj).getLastName());
+            e.setAge( ( (Student) obj).getAge());
+        }
+
+        return null;
+    }
+
     @Override
     public String toString() {
         return super.toString() +", " +  "salary=" + salary;

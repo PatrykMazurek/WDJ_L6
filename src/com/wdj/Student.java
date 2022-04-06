@@ -24,6 +24,18 @@ public class Student extends Person {
         }
     }
 
+    // rozszerzenie metody zadeklarowanej w klasie Person
+    @Override
+    public void toShow() {
+        System.out.println("Student z uczelni " + universityName );
+    }
+
+    // rozszerzenie metody zadeklarowanej w klasie Person
+    @Override
+    public Object convert(Object obj) {
+        return null;
+    }
+
     @Override
     public String toString() {
         return "universityName='" + universityName + ", year=" + year;
