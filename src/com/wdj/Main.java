@@ -1,6 +1,8 @@
 package com.wdj;
 
 import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -10,7 +12,23 @@ public class Main {
 
         // nie jset możiwe utworzenie klasy Person gyż klasa jest abstrakcyjna
 
-        new MainWindow();
+//        new MainWindow();
+        new ListWindow();
+
+
+        List<Object> tempList = new ArrayList<>();
+        tempList.add("text");
+        tempList.add(12);
+
+        System.out.println(tempList.get(0));
+        if ( tempList.contains(12)){
+            System.out.println("element w liście");
+        }else{
+            System.out.println("element poza listą");
+        }
+
+        tempList.
+
 //        Person p = new Person("Patryk", "Mazurek", 34);
 //        Employee e = new Employee(2000);
 //        e.setName("Patryk");
