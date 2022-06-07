@@ -1,8 +1,9 @@
 package com.wdj;
 
 import java.lang.reflect.Member;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -13,21 +14,39 @@ public class Main {
         // nie jset możiwe utworzenie klasy Person gyż klasa jest abstrakcyjna
 
 //        new MainWindow();
-        new ListWindow();
+//        new ListWindow();
 
+        List<String> tempList = new ArrayList<>();
+        tempList.add("Pomidor");
+        tempList.add("Pomarańcza");
+        tempList.add("Kiwi");
+        tempList.add("Kalafior");
+        tempList.add("Cytryna");
 
-        List<Object> tempList = new ArrayList<>();
-        tempList.add("text");
-        tempList.add(12);
+        Stream<String> stream = tempList.stream();
+        List<String> fruits = stream.filter(f -> f.length() > 4).collect(Collectors.toList());
+//        fruits.stream().map(String::toUpperCase).forEach(System.out::println);
+//        List<Integer> intFruits = fruits.stream()
+//                .map(f -> f.length()).collect(Collectors.toList());
+//
+//        intFruits.stream().forEach(System.out::println);
+//
+//        fruits.stream().forEach(System.out::println);
 
-        System.out.println(tempList.get(0));
-        if ( tempList.contains(12)){
-            System.out.println("element w liście");
-        }else{
-            System.out.println("element poza listą");
+        BoardGame boardGame = new BoardGame();
+        List<BoardGame> boardGames = boardGame.initListGame();
+
+        long countGame = boardGames.stream().filter(g -> g.minPlayers > 1).count();
+        System.out.println("liczba gier " + countGame);
+
+        System.out.println(boardGame.bestGameStream(boardGames, "a"));
+
+        Map<Integer, List<BoardGame>> gameMap = boardGame.toMapYear(boardGames);
+
+        for (Map.Entry<Integer, List<BoardGame>> rating : gameMap.entrySet()){
+            System.out.println( rating.getKey() + " : " + rating.getValue() );
         }
 
-        tempList.
 
 //        Person p = new Person("Patryk", "Mazurek", 34);
 //        Employee e = new Employee(2000);

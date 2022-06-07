@@ -1,10 +1,8 @@
 package com.wdj;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BoardGame {
 
@@ -76,6 +74,8 @@ public class BoardGame {
         return this.rating;
     }
 
+    public int getYear() { return year;}
+
     public String bestGame(List<BoardGame> boardGames){
         double highestRanking = 0;
         BoardGame bestGame = null;
@@ -89,6 +89,31 @@ public class BoardGame {
         }
 //        System.out.println(bestGame.name);
         return "Najlepsz gra: " + bestGame.toString();
+    }
+
+    public String bestGameStream(List<BoardGame> boardGames, String sign){
+        BoardGame tempGame = boardGames.stream()
+                .filter(g -> g.name.contains(sign))
+                .max(Comparator.comparing(BoardGame::getRating))
+                .orElseThrow();
+
+        return "Najlepsz gra: " + tempGame.toString();
+    }
+    // zwracanie mapy pogrupowanej po elemencie raiting, do działania grupowania wymagany
+    // stworzenie odpowiedniej metody zwracającej wymaganą wartość
+    public Map<Double, List<BoardGame>> toMapRaiting (List<BoardGame> boardGames){
+        Map<Double, List<BoardGame>> tempMap = boardGames
+                .stream()
+                .collect(Collectors.groupingBy(BoardGame::getRating));
+        return tempMap;
+    }
+
+    // zwrócenie mapy pogrupowanej po roku wydania gry
+    public Map<Integer, List<BoardGame>> toMapYear (List<BoardGame> boardGames){
+        Map<Integer, List<BoardGame>> tempMap = boardGames
+                .stream()
+                .collect(Collectors.groupingBy(BoardGame::getYear));
+        return tempMap;
     }
 
     @Override
